@@ -2934,7 +2934,7 @@
 	}
 
 	#header {
-		background: #444;
+		background: #53677a;
 		color: #bbb;
 		cursor: default;
 		height: 3.25em;
@@ -3012,7 +3012,7 @@
 					}
 
 					#header nav > ul > li.active a:not(.button) {
-						background-color: rgba(153, 153, 153, 0.25);
+						background-color: #53677a;
 					}
 
 					#header nav > ul > li .button {
@@ -3033,14 +3033,14 @@
 			#header input[type="reset"]:hover,
 			#header input[type="button"]:hover,
 			#header .button:hover {
-				background-color: rgba(153, 153, 153, 0.25);
+				background-color: #53677a;
 			}
 
 			#header input[type="submit"]:active,
 			#header input[type="reset"]:active,
 			#header input[type="button"]:active,
 			#header .button:active {
-				background-color: rgba(153, 153, 153, 0.5);
+				background-color: #53677a;
 			}
 
 		#header .container {
@@ -3597,7 +3597,7 @@
 				top: 0;
 				width: 275px;
 				z-index: 10002;
-				background: #2b2b2b;
+				background: #2d3b49;
 				color: #bbb;
 			}
 
