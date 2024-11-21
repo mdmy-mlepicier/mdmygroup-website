@@ -6,9 +6,10 @@
 -->
 <html>
 	<head>
-		<title>MDMY Group</title>
+		<title id="title"></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" id="meta-description" content=""> <!-- Dynamically updated -->
 		<meta property="og:title" content="MDMY Group">
 		<meta property="og:image" content="images/thumbnail/thumbnail.png">
 		<meta property="og:url"   content="https://www.mdmygroup.com/">
@@ -67,14 +68,19 @@
 
 			<!-- Banner -->
 				<section id="banner">
-					<!-- <h2>MDMY Group</h2> -->
+					<!-- Logo remains static -->
 					<img src="images/logo/mdmy_white_slim.png" alt="MDMY Group" style="width: 40%;">
-					<p style="text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);">Global E-Commerce Excellence with French Savoir-Faire<p>
+					
+					<!-- Tagline dynamically updated -->
+					<p id="banner-tagline" style="text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);"></p>
+					
 					<ul class="actions special">
-						<li><a href="#cta" class="button primary">Get in touch</a></li>
-						<li><a href="#team" class="button">Our Team</a></li>
+						<!-- Buttons dynamically updated -->
+						<li><a href="#cta" id="banner-button1" class="button primary"></a></li>
+						<li><a href="#team" id="banner-button2" class="button"></a></li>
 					</ul>
 				</section>
+			
 
 			<!-- Main -->
 				<section id="main" class="container">

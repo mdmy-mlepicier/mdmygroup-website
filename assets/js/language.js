@@ -61,5 +61,5 @@ document.getElementById('lang-fr').addEventListener('click', () => {
 });
 
 // Load default or previously selected language on page load
-const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+const savedLanguage = localStorage.getItem('selectedLanguage') || 'fr';
 updateContent(savedLanguage);
