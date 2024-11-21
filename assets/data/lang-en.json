@@ -1,0 +1,45 @@
+{
+    "title": "MDMY Group",
+    "metaDescription": "Global E-Commerce Excellence with French Savoir-Faire",
+    "homeLink": "Home",
+    "sectionsTitle": "Sections",
+    "missionLink": "Mission",
+    "teamLink": "Team",
+    "contactLink": "Contact",
+    "languageTitle": "Language",
+    "languageOptionEnglish": "English",
+    "languageOptionFrench": "Français",
+    "tagline": "Global E-Commerce Excellence with French Savoir-Faire",
+    "bannerButton1": "Get in touch",
+    "bannerButton2": "Our Team",
+    "missionHeading": "Four Minds. One Mission.",
+    "missionText": "Meet our team of four dynamic entrepreneurs, educated in France, fueled by a common vision of success and impact. With excellence and innovation at our core, we are on a journey to build long-lasting businesses that not only excel but also leave a positive mark on the world. As a close-knit group, our team capitalizes on diverse talents, embracing challenges with a spirit of collaboration.",
+    "teamMembers": [
+        {
+            "name": "Yohann Bouvy",
+            "role": "Chief Financial Officer",
+            "description": "IAE Paris-Est School of Management Master’s graduate specialized in Financial Engineering. Experienced Corporate Affairs Manager eager to leverage financial best practices to mitigate financial risk and unleash businesses profitability."
+        },
+        {
+            "name": "Mathieu Regnier",
+            "role": "Chief Marketing Officer",
+            "description": "SKEMA Business School Master’s graduate specialized in Digital Marketing & Data Analytics. Acquired in-depth knowledge and proficiency in implementing digital strategies for acquisition and customer relationship management."
+        },
+        {
+            "name": "Dimitri Bogacz",
+            "role": "Chief Operating Officer",
+            "description": "Montpellier Business School Master’s graduate specialized in Sales Strategy. Result oriented and strongly experienced in sales development. Equipped with sharp analytical skills and a proven ability to maximize revenue growth."
+        },
+        {
+            "name": "Matthieu Lepicier",
+            "role": "Chief Technology Officer",
+            "description": "Ivey Business School Master's graduate and University of Technology of Troyes Engineer specialized in Management Consulting & Computer Science. Passionate about leveraging technology and analytics to enhance business decision."
+        }
+    ],
+    "ctaHeading": "Get In Touch",
+    "ctaText": "Connect with our team to explore collaboration opportunities.",
+    "ctaEmailButton": "E-mail us",
+    "ctaCallButton": "Call us",
+    "footerText": "MDMY Group - 9 Rue des Colonnes, 75002, Paris, France.",
+    "copyright": "&copy; 2024 - MDMY Group SAS. All rights reserved."
+}
