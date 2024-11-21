@@ -8,6 +8,16 @@ function updateContent(lang) {
             if (data.metaDescription)
                 document.getElementById('meta-description').setAttribute('content', data.metaDescription);
 
+            // Update header navigation section
+            if (data.homeLink) document.getElementById('home-link').innerText = data.homeLink;
+            if (data.sectionsTitle) document.getElementById('sections-title').innerText = data.sectionsTitle;
+            if (data.missionLink) document.getElementById('mission-link').innerText = data.missionLink;
+            if (data.teamLink) document.getElementById('team-link').innerText = data.teamLink;
+            if (data.contactLink) document.getElementById('contact-link').innerText = data.contactLink;
+            if (data.languageTitle) document.getElementById('language-title').innerText = data.languageTitle;
+            if (data.languageOptionEnglish) document.getElementById('lang-en').innerText = data.languageOptionEnglish;
+            if (data.languageOptionFrench) document.getElementById('lang-fr').innerText = data.languageOptionFrench;
+
             // Update banner section
             if (data.tagline) document.querySelector('#banner p').innerText = data.tagline;
             if (data.bannerButton1)
@@ -61,5 +71,5 @@ document.getElementById('lang-fr').addEventListener('click', () => {
 });
 
 // Load default or previously selected language on page load
-const savedLanguage = localStorage.getItem('selectedLanguage') || 'fr';
+const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
 updateContent(savedLanguage);
