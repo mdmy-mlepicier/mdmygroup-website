@@ -11,9 +11,12 @@ function updateContent(lang) {
             // Update header navigation section
             if (data.homeLink) document.getElementById('home-link').innerText = data.homeLink;
             if (data.sectionsTitle) document.getElementById('sections-title').innerText = data.sectionsTitle;
-            if (data.missionLink) document.getElementById('mission-link').innerText = data.missionLink;
-            if (data.teamLink) document.getElementById('team-link').innerText = data.teamLink;
-            if (data.contactLink) document.getElementById('contact-link').innerText = data.contactLink;
+            // Add event listener to handle dynamically loaded links
+            document.getElementById('sections-title').addEventListener('click', () => {
+                if (data.missionLink) document.getElementById('mission-link').innerText = data.missionLink;
+                if (data.teamLink) document.getElementById('team-link').innerText = data.teamLink;
+                if (data.contactLink) document.getElementById('contact-link').innerText = data.contactLink;
+            });
             if (data.languageTitle) document.getElementById('language-title').innerText = data.languageTitle;
             if (data.languageOptionEnglish) document.getElementById('lang-en').innerText = data.languageOptionEnglish;
             if (data.languageOptionFrench) document.getElementById('lang-fr').innerText = data.languageOptionFrench;
@@ -71,5 +74,5 @@ document.getElementById('lang-fr').addEventListener('click', () => {
 });
 
 // Load default or previously selected language on page load
-const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+const savedLanguage = localStorage.getItem('selectedLanguage') || 'fr';
 updateContent(savedLanguage);
