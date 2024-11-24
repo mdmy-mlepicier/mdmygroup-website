@@ -39,8 +39,8 @@ function updateContent(lang) {
                 const teamSections = document.querySelectorAll('#team .features-row section');
                 data.teamMembers.forEach((member, index) => {
                     if (teamSections[index]) {
-                        teamSections[index].querySelector('h3').innerText = member.name;
                         teamSections[index].querySelector('h5').innerText = member.role;
+                        teamSections[index].querySelector('h6').innerText = member.location;
                         teamSections[index].querySelector('p').innerText = member.description;
                     }
                 });
@@ -53,9 +53,16 @@ function updateContent(lang) {
                 document.querySelector('#cta input[value="E-mail us"]').value = data.ctaEmailButton;
             if (data.ctaCallButton)
                 document.querySelector('#cta input[value="Call us"]').value = data.ctaCallButton;
+            
+            // Update CTA section
+            if (data.ctaHeading) document.querySelector('#cta h2').innerText = data.ctaHeading;
+            if (data.ctaText) document.querySelector('#cta p').innerText = data.ctaText;
+            if (data.ctaEmailButton)
+                document.querySelector('#cta input[value="E-mail us"]').value = data.ctaEmailButton;
+            if (data.ctaCallButton)
+                document.querySelector('#cta input[value="Call us"]').value = data.ctaCallButton;
 
             // Update footer section
-            if (data.footerText) document.querySelector('#footer p').innerText = data.footerText;
             if (data.copyright)
                 document.querySelector('#footer .copyright li:first-child').innerHTML = data.copyright;
         })
