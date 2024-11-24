@@ -53,6 +53,14 @@ function updateContent(lang) {
                 document.querySelector('#cta input[value="E-mail us"]').value = data.ctaEmailButton;
             if (data.ctaCallButton)
                 document.querySelector('#cta input[value="Call us"]').value = data.ctaCallButton;
+            
+            // Update CTA section
+            if (data.ctaHeading) document.querySelector('#cta h2').innerText = data.ctaHeading;
+            if (data.ctaText) document.querySelector('#cta p').innerText = data.ctaText;
+            if (data.ctaEmailButton)
+                document.querySelector('#cta input[value="E-mail us"]').value = data.ctaEmailButton;
+            if (data.ctaCallButton)
+                document.querySelector('#cta input[value="Call us"]').value = data.ctaCallButton;
 
             // Update footer section
             if (data.copyright)
