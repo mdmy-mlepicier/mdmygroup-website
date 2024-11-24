@@ -55,7 +55,6 @@ function updateContent(lang) {
                 document.querySelector('#cta input[value="Call us"]').value = data.ctaCallButton;
 
             // Update footer section
-            if (data.footerText) document.querySelector('#footer p').innerText = data.footerText;
             if (data.copyright)
                 document.querySelector('#footer .copyright li:first-child').innerHTML = data.copyright;
         })
