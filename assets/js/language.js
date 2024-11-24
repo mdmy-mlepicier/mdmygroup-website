@@ -39,8 +39,8 @@ function updateContent(lang) {
                 const teamSections = document.querySelectorAll('#team .features-row section');
                 data.teamMembers.forEach((member, index) => {
                     if (teamSections[index]) {
-                        teamSections[index].querySelector('h3').innerText = member.name;
                         teamSections[index].querySelector('h5').innerText = member.role;
+                        teamSections[index].querySelector('h6').innerText = member.location;
                         teamSections[index].querySelector('p').innerText = member.description;
                     }
                 });
