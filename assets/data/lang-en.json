@@ -37,6 +37,13 @@
         }
     ],
     "clientHeading": "Our Work",
+    "clientProjects": [
+        {
+            "title": "Facemira",
+            "description": "E-Commerce Shop: Rechargeable and Portable LED makeup mirrors.",
+            "cta": "Visit"
+        }
+    ],
     "ctaHeading": "Get In Touch",
     "ctaText": "Connect with our team to explore collaboration opportunities.",
     "ctaEmailButton": "E-mail us",

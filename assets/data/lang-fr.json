@@ -37,6 +37,13 @@
         }
     ],
     "clientHeading": "Nos Réalisations",
+    "clientProjects": [
+        {
+            "title": "Facemira",
+            "description": "Shop E-Commerce de Miroir de maquillage LED portable et rechargeable.",
+            "cta": "Découvrir"
+        }
+    ],
     "ctaHeading": "Nous Contacter",
     "ctaText": "Contactez notre équipe pour explorer les opportunités de collaboration.",
     "ctaEmailButton": "Nous écrire",
