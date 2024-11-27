@@ -67,6 +67,7 @@ function updateContent(lang) {
             }
 
             // Update client projects
+            updateElement('#cliendHeading', data.clientHeading, 'Client heading');
             if (data.clientProjects) {
                 const clientSections = document.querySelectorAll('#client .row .col-6.col-12-narrower section');
                 data.clientProjects.forEach((project, index) => {
