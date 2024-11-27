@@ -1,85 +1,206 @@
-// Function to update content dynamically based on selected language
+// Function to update content dynamically based on the selected language
 function updateContent(lang) {
-    fetch(`assets/data/lang-${lang}.json`)
-        .then(response => response.json())
-        .then(data => {
-            // Update <head> content
-            if (data.title) document.getElementById('title').innerText = data.title;
-            if (data.metaDescription)
-                document.getElementById('meta-description').setAttribute('content', data.metaDescription);
+    console.log(`Attempting to load language: ${lang}`); // Debug log for language
 
-            // Update header navigation section
-            if (data.homeLink) document.getElementById('home-link').innerText = data.homeLink;
-            if (data.sectionsTitle) document.getElementById('sections-title').innerText = data.sectionsTitle;
-            // Add event listener to handle dynamically loaded links
-            document.getElementById('sections-title').addEventListener('click', () => {
-                if (data.missionLink) document.getElementById('mission-link').innerText = data.missionLink;
-                if (data.teamLink) document.getElementById('team-link').innerText = data.teamLink;
-                if (data.contactLink) document.getElementById('contact-link').innerText = data.contactLink;
+    fetch(`assets/data/lang-${lang}.json`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to load language file: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Language data loaded successfully:', data); // Debug log for loaded data
+
+            // Update <head> content
+            if (data.title) {
+                const titleElement = document.getElementById('title');
+                if (titleElement) {
+                    titleElement.innerText = data.title;
+                } else {
+                    console.warn('Title element not found');
+                }
+            }
+
+            if (data.metaDescription) {
+                const metaElement = document.getElementById('meta-description');
+                if (metaElement) {
+                    metaElement.setAttribute('content', data.metaDescription);
+                } else {
+                    console.warn('Meta description element not found');
+                }
+            }
+
+            // Update header navigation
+            updateElement('#home-link', data.homeLink, 'Home link');
+            updateElement('#sections-title', data.sectionsTitle, 'Sections title');
+
+            // Add event listeners for dynamically loaded links
+            document.getElementById('sections-title')?.addEventListener('click', () => {
+                updateElement('#mission-link', data.missionLink, 'Mission link');
+                updateElement('#team-link', data.teamLink, 'Team link');
+                updateElement('#contact-link', data.contactLink, 'Contact link');
             });
-            if (data.languageTitle) document.getElementById('language-title').innerText = data.languageTitle;
-            if (data.languageOptionEnglish) document.getElementById('lang-en').innerText = data.languageOptionEnglish;
-            if (data.languageOptionFrench) document.getElementById('lang-fr').innerText = data.languageOptionFrench;
 
             // Update banner section
-            if (data.tagline) document.querySelector('#banner p').innerText = data.tagline;
-            if (data.bannerButton1)
-                document.querySelector('#banner .button.primary').innerText = data.bannerButton1;
-            if (data.bannerButton2)
-                document.querySelector('#banner .button:not(.primary)').innerText = data.bannerButton2;
+            updateElement('#banner p', data.tagline, 'Banner tagline');
+            updateElement('#banner-button1', data.bannerButton1, 'Primary banner button');
+            updateElement('#banner-button2', data.bannerButton2, 'Secondary banner button');
 
             // Update mission section
-            if (data.missionHeading)
-                document.querySelector('#mission h2').innerText = data.missionHeading;
-            if (data.missionText)
-                document.querySelector('#mission p').innerText = data.missionText;
+            updateElement('#mission h2', data.missionHeading, 'Mission heading');
+            updateElement('#mission p', data.missionText, 'Mission text');
 
             // Update team section
             if (data.teamMembers) {
                 const teamSections = document.querySelectorAll('#team .features-row section');
                 data.teamMembers.forEach((member, index) => {
-                    if (teamSections[index]) {
-                        teamSections[index].querySelector('h5').innerText = member.role;
-                        teamSections[index].querySelector('h6').innerText = member.location;
-                        teamSections[index].querySelector('p').innerText = member.description;
+                    const section = teamSections[index];
+                    if (section) {
+                        updateChildElement(section, 'h5', member.role, 'Team member role');
+                        updateChildElement(section, 'h6', member.location, 'Team member location');
+                        updateChildElement(section, 'p', member.description, 'Team member description');
+                    } else {
+                        console.warn(`Team section ${index + 1} not found`);
+                    }
+                });
+            }
+
+            // Update client projects
+            if (data.clientProjects) {
+                const clientSections = document.querySelectorAll('#client .row .col-6.col-12-narrower section');
+                data.clientProjects.forEach((project, index) => {
+                    const section = clientSections[index];
+                    if (section) {
+                        updateChildElement(section, 'h3', project.title, 'Project title');
+                        updateChildElement(section, 'p', project.description, 'Project description');
+                        updateChildElement(section, 'a', project.cta, 'Project call-to-action');
+                    } else {
+                        console.warn(`Client project section ${index + 1} not found`);
                     }
                 });
             }
 
             // Update CTA section
-            if (data.ctaHeading) document.querySelector('#cta h2').innerText = data.ctaHeading;
-            if (data.ctaText) document.querySelector('#cta p').innerText = data.ctaText;
-            if (data.ctaEmailButton)
-                document.querySelector('#cta input[value="E-mail us"]').value = data.ctaEmailButton;
-            if (data.ctaCallButton)
-                document.querySelector('#cta input[value="Call us"]').value = data.ctaCallButton;
-            
-            // Update CTA section
-            if (data.ctaHeading) document.querySelector('#cta h2').innerText = data.ctaHeading;
-            if (data.ctaText) document.querySelector('#cta p').innerText = data.ctaText;
-            if (data.ctaEmailButton)
-                document.querySelector('#cta input[value="E-mail us"]').value = data.ctaEmailButton;
-            if (data.ctaCallButton)
-                document.querySelector('#cta input[value="Call us"]').value = data.ctaCallButton;
+            updateElement('#cta h2', data.ctaHeading, 'CTA heading');
+            updateElement('#cta p', data.ctaText, 'CTA text');
+            updateInputValue('#email-button', data.ctaEmailButton, 'CTA email button');
+            updateInputValue('#call-button', data.ctaCallButton, 'CTA call button');
 
             // Update footer section
-            if (data.copyright)
-                document.querySelector('#footer .copyright li:first-child').innerHTML = data.copyright;
+            if (data.copyright) {
+                const footerElement = document.querySelector('#footer .copyright li:first-child');
+                if (footerElement) {
+                    footerElement.innerHTML = data.copyright;
+                } else {
+                    console.warn('Footer copyright element not found');
+                }
+            }
         })
         .catch(error => console.error('Error loading JSON:', error));
 }
 
-// Add event listeners to language buttons
-document.getElementById('lang-en').addEventListener('click', () => {
-    updateContent('en'); // Load English content
-    localStorage.setItem('selectedLanguage', 'en'); // Save selected language
+// Helper function to update text content of an element
+function updateElement(selector, value, description) {
+    if (value) {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.innerText = value;
+        } else {
+            console.warn(`${description} element (${selector}) not found`);
+        }
+    }
+}
+
+// Helper function to update text content of a child element
+function updateChildElement(parent, childSelector, value, description) {
+    if (value) {
+        const child = parent.querySelector(childSelector);
+        if (child) {
+            child.innerText = value;
+        } else {
+            console.warn(`${description} (${childSelector}) not found in parent`, parent);
+        }
+    }
+}
+
+// Helper function to update value of an input element
+function updateInputValue(selector, value, description) {
+    if (value) {
+        const input = document.querySelector(selector);
+        if (input) {
+            input.value = value;
+        } else {
+            console.warn(`${description} input (${selector}) not found`);
+        }
+    }
+}
+
+// Event listeners for language buttons
+document.addEventListener('click', (event) => {
+    // Check if the clicked element is the <a> tag or its child <img>
+    const clickedElement = event.target.closest('a.lang-btn');
+    if (clickedElement) {
+        event.preventDefault();
+
+        if (clickedElement.id === 'lang-en') {
+            console.log('Switching to English');
+            updateContent('en');
+            localStorage.setItem('selectedLanguage', 'en');
+        } else if (clickedElement.id === 'lang-fr') {
+            console.log('Switching to French');
+            updateContent('fr');
+            localStorage.setItem('selectedLanguage', 'fr');
+        }
+    }
 });
 
-document.getElementById('lang-fr').addEventListener('click', () => {
-    updateContent('fr'); // Load French content
-    localStorage.setItem('selectedLanguage', 'fr'); // Save selected language
-});
 
-// Load default or previously selected language on page load
-const savedLanguage = localStorage.getItem('selectedLanguage') || 'fr';
-updateContent(savedLanguage);
+// Helper function to detect user language
+function detectUserLanguage() {
+    // Check if language is already stored in localStorage
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+        console.log(`Using saved language: ${savedLanguage}`);
+        return savedLanguage;
+    }
+
+    // Check browser's preferred languages
+    const preferredLanguages = navigator.languages || [navigator.language];
+    if (preferredLanguages.length > 0) {
+        console.log(`Using browser's preferred language: ${preferredLanguages[0]}`);
+        return preferredLanguages[0].split('-')[0];
+    }
+
+    // // Use Geolocation API as a fallback
+    // if ('geolocation' in navigator) {
+    //     navigator.geolocation.getCurrentPosition(
+    //         (position) => {
+    //             const { latitude, longitude } = position.coords;
+    //             console.log(`Detected location: ${latitude}, ${longitude}`);
+    //             // Replace with your reverse geocoding logic
+    //             fetch(`https://geocode.xyz/${latitude},${longitude}?json=1`)
+    //                 .then(response => response.json())
+    //                 .then(data => {
+    //                     const country = data.country; // Example: "France"
+    //                     const languageCode = country === 'France' ? 'fr' : 'en';
+    //                     console.log(`Detected language based on location: ${languageCode}`);
+    //                     updateContent(languageCode);
+    //                 });
+    //         },
+    //         (error) => {
+    //             console.error('Geolocation error:', error);
+    //             updateContent('en'); // Default fallback
+    //         }
+    //     );
+    // }
+
+    // Default to English if all else fails
+    console.log('Falling back to default language: en');
+    return 'en';
+}
+
+// Detect and update content
+const languageCode = detectUserLanguage();
+updateContent(languageCode);
+localStorage.setItem('selectedLanguage', languageCode);

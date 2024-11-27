@@ -3669,6 +3669,32 @@
 
 	}
 
+/* Language Switcher */
+.language-switcher {
+    display: inline-block;
+    margin-left: 7.5em; /* Space between title and flags */
+    vertical-align: middle; /* Align with title */
+}
+
+.language-switcher a {
+    display: inline-block; /* Flexible alignment */
+    margin-right: 0.5em; /* Space between flags */
+    text-decoration: none; /* Remove underline */
+	border-bottom: none;
+}
+
+.language-switcher img {
+    display: inline-block; /* Prevent baseline alignment issues */
+    vertical-align: middle; /* Align correctly with text */
+    margin: 0; /* Remove margin */
+	border-radius: 2px; /* Optional: Rounded corners for the flags */
+}
+
+.language-switcher a:hover img {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+}
+
 /* Mobile */
 
 	@media screen and (max-width: 736px) {

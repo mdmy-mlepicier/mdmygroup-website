@@ -6,12 +6,9 @@
     "missionLink": "Mission",
     "teamLink": "Team",
     "contactLink": "Contact",
-    "languageTitle": "Language",
-    "languageOptionEnglish": "English",
-    "languageOptionFrench": "Français",
     "tagline": "Global E-Commerce Excellence with French Savoir-Faire",
-    "bannerButton1": "Get in touch",
-    "bannerButton2": "Our Team",
+    "bannerButton1": "Get In Touch",
+    "bannerButton2": "Meet Our Team",
     "missionHeading": "Four Minds. One Mission.",
     "missionText": "Meet our team of four dynamic entrepreneurs, educated in France, fueled by a common vision of success and impact. With excellence and innovation at our core, we are on a journey to build long-lasting businesses that not only excel but also leave a positive mark on the world. As a close-knit group, our team capitalizes on diverse talents, embracing challenges with a spirit of collaboration.",
     "teamMembers": [
@@ -37,6 +34,13 @@
         }
     ],
     "clientHeading": "Our Work",
+    "clientProjects": [
+        {
+            "title": "Facemira",
+            "description": "E-Commerce Shop: Rechargeable and Portable LED makeup mirrors.",
+            "cta": "Visit"
+        }
+    ],
     "ctaHeading": "Get In Touch",
     "ctaText": "Connect with our team to explore collaboration opportunities.",
     "ctaEmailButton": "E-mail us",
