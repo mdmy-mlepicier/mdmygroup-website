@@ -32,6 +32,14 @@
 			<!-- Header -->
 				<header id="header" class="alt">
 					<h1><a href="index.html">MDMY</a> Group</h1>
+					<div class="language-switcher">
+						<a href="#" id="lang-en" class="lang-btn" role="button" title="English">
+							<img src="https://flagcdn.com/w40/us.png" alt="English" width="18" height="12">
+						</a>
+						<a href="#" id="lang-fr" class="lang-btn" role="button" title="Français">
+							<img src="https://flagcdn.com/w40/fr.png" alt="Français" width="18" height="12">
+						</a>
+					</div>
 					<nav id="nav">
 						<ul>
 							<li><a href="index.html" id="home-link">Accueil</a></li>
@@ -52,13 +60,6 @@
 									</li> -->
 								</ul>
 							</li>
-							<li>
-								<a href="#" class="icon solid fa-angle-down" id="language-title">Langue</a>
-								<ul>
-									<li><a id="lang-en" class="lang-btn" href="#" role="button">Anglais</a></li>
-									<li><a id="lang-fr" class="lang-btn" href="#" role="button">Français</a></li>
-								</ul>
-							</li>
 							<!-- <li><a href="#" class="button">Sign Up</a></li> -->
 						</ul>
 					</nav>
@@ -74,7 +75,7 @@
 					
 					<ul class="actions special">
 						<!-- Buttons dynamically updated -->
-						<li><a href="#cta" id="banner-button1" class="button primary">Nous contacter</a></li>
+						<li><a href="#cta" id="banner-button1" class="button primary">Nous Contacter</a></li>
 						<li><a href="#team" id="banner-button2" class="button">Notre Équipe</a></li>
 					</ul>
 				</section>
@@ -113,7 +114,7 @@
 							</section>
 							
 						</div>
-						<div class="features-row" style= "margin-bottom: -2em;">
+						<div class="features-row">
 							<section>
 								<img src="images/headshots/dimitri.jpg" alt="Dimitri Bogacz" class="circular-image">
 								<h3 style= "margin-bottom: 0em; margin-top: 0;">Dimitri Bogacz<a style = "margin: 0em 0em 0em 0.5em; font-size: 0.80em; opacity: 0.9; color: #53677a;" href= "https://www.linkedin.com/in/dimitri-bogacz-28949713a/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></h3></h3>
@@ -168,10 +169,10 @@
 					<form>
 						<div class="row gtr-50 gtr-uniform">
 						   <div class="col-6 col-12-mobilep">
-							  <input type="button" value="E-mail us" class="fit" onclick="sendEmail()" />
+							  <input type="button" id="email-button" value="E-mail us" class="fit" onclick="sendEmail()" />
 						   </div>
 						   <div class="col-6 col-12-mobilep">
-							  <input type="reset" value="Call us" class="fit" formaction="tel:+33699410587" />
+							  <input type="reset" id="call-button" value="Call us" class="fit" formaction="tel:+33699410587" />
 						   </div>
 						</div>
 					 </form>

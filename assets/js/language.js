@@ -34,9 +34,6 @@ function updateContent(lang) {
             // Update header navigation
             updateElement('#home-link', data.homeLink, 'Home link');
             updateElement('#sections-title', data.sectionsTitle, 'Sections title');
-            updateElement('#language-title', data.languageTitle, 'Language title');
-            updateElement('#lang-en', data.languageOptionEnglish, 'English language option');
-            updateElement('#lang-fr', data.languageOptionFrench, 'French language option');
 
             // Add event listeners for dynamically loaded links
             document.getElementById('sections-title')?.addEventListener('click', () => {
@@ -87,8 +84,8 @@ function updateContent(lang) {
             // Update CTA section
             updateElement('#cta h2', data.ctaHeading, 'CTA heading');
             updateElement('#cta p', data.ctaText, 'CTA text');
-            updateInputValue('#cta input[value="E-mail us"]', data.ctaEmailButton, 'CTA email button');
-            updateInputValue('#cta input[value="Call us"]', data.ctaCallButton, 'CTA call button');
+            updateInputValue('#email-button', data.ctaEmailButton, 'CTA email button');
+            updateInputValue('#call-button', data.ctaCallButton, 'CTA call button');
 
             // Update footer section
             if (data.copyright) {
@@ -139,23 +136,71 @@ function updateInputValue(selector, value, description) {
     }
 }
 
+// Event listeners for language buttons
 document.addEventListener('click', (event) => {
-    console.log('A click event was detected'); // Debug log for all clicks
-    console.log('Clicked element:', event.target); // Log the clicked element
-    if (event.target.id === 'lang-en') {
+    // Check if the clicked element is the <a> tag or its child <img>
+    const clickedElement = event.target.closest('a.lang-btn');
+    if (clickedElement) {
         event.preventDefault();
-        console.log('Switching to English'); // Log for English button click
-        updateContent('en');
-        localStorage.setItem('selectedLanguage', 'en');
-    } else if (event.target.id === 'lang-fr') {
-        event.preventDefault();
-        console.log('Switching to French'); // Log for French button click
-        updateContent('fr');
-        localStorage.setItem('selectedLanguage', 'fr');
+
+        if (clickedElement.id === 'lang-en') {
+            console.log('Switching to English');
+            updateContent('en');
+            localStorage.setItem('selectedLanguage', 'en');
+        } else if (clickedElement.id === 'lang-fr') {
+            console.log('Switching to French');
+            updateContent('fr');
+            localStorage.setItem('selectedLanguage', 'fr');
+        }
     }
 });
 
-// Load default or previously selected language on page load
-const savedLanguage = localStorage.getItem('selectedLanguage') || 'fr';
-console.log(`Loading saved language: ${savedLanguage}`);
-updateContent(savedLanguage);
+
+// Helper function to detect user language
+function detectUserLanguage() {
+    // Check if language is already stored in localStorage
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+        console.log(`Using saved language: ${savedLanguage}`);
+        return savedLanguage;
+    }
+
+    // Check browser's preferred languages
+    const preferredLanguages = navigator.languages || [navigator.language];
+    if (preferredLanguages.length > 0) {
+        console.log(`Using browser's preferred language: ${preferredLanguages[0]}`);
+        return preferredLanguages[0].split('-')[0];
+    }
+
+    // // Use Geolocation API as a fallback
+    // if ('geolocation' in navigator) {
+    //     navigator.geolocation.getCurrentPosition(
+    //         (position) => {
+    //             const { latitude, longitude } = position.coords;
+    //             console.log(`Detected location: ${latitude}, ${longitude}`);
+    //             // Replace with your reverse geocoding logic
+    //             fetch(`https://geocode.xyz/${latitude},${longitude}?json=1`)
+    //                 .then(response => response.json())
+    //                 .then(data => {
+    //                     const country = data.country; // Example: "France"
+    //                     const languageCode = country === 'France' ? 'fr' : 'en';
+    //                     console.log(`Detected language based on location: ${languageCode}`);
+    //                     updateContent(languageCode);
+    //                 });
+    //         },
+    //         (error) => {
+    //             console.error('Geolocation error:', error);
+    //             updateContent('en'); // Default fallback
+    //         }
+    //     );
+    // }
+
+    // Default to English if all else fails
+    console.log('Falling back to default language: en');
+    return 'en';
+}
+
+// Detect and update content
+const languageCode = detectUserLanguage();
+updateContent(languageCode);
+localStorage.setItem('selectedLanguage', languageCode);
