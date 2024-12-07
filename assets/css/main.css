@@ -3687,13 +3687,11 @@
     display: inline-block; /* Prevent baseline alignment issues */
     vertical-align: middle; /* Align correctly with text */
     margin: 0; /* Remove margin */
-	border-radius: 2px; /* Optional: Rounded corners for the flags */
+	border-radius: 1px; /* Optional: Rounded corners for the flags */
+	filter: saturate(0.75); /* Reduces saturation to 70% of the original */
+	transform: translateY(-4px); /* Adjust the pixel value as needed */
 }
 
-.language-switcher a:hover img {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-}
 
 /* Mobile */
 
