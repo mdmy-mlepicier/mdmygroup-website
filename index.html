@@ -166,7 +166,7 @@
 							  <input type="button" id="email-button" value="E-mail us" class="fit" onclick="sendEmail()" />
 						   </div>
 						   <div class="col-6 col-12-mobilep">
-							  <input type="reset" id="call-button" value="Call us" class="fit" formaction="tel:+33699410587" />
+							  <input type="reset" id="call-button" value="Call us" class="fit" onclick="makeCall()"/>
 						   </div>
 						</div>
 					</form>
@@ -210,7 +210,19 @@
 				   window.location.href = 'mailto:contact@mdmygroup.com';
 				}
 			</script>
-
+			<script>
+				function makeCall() {
+					// Use a simple user agent check to detect mobile devices
+					if (/Mobi|Android/i.test(navigator.userAgent)) {
+						// Mobile device, initiate call
+						window.location.href = 'tel:+33699410587';
+					} else {
+						// Use the loaded language data for the alert message
+						alert(currentLangData.ctaCallAlertMessage);
+					}
+				}
+			</script>
+			
 	</body>
 </html>
 

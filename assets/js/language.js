@@ -98,6 +98,9 @@ function updateContent(lang) {
                 }
             }
         })
+        .then(data => {
+            window.currentLangData = data; // Store it in a global variable for easy access
+        })
         .catch(error => console.error('Error loading JSON:', error));
 }
 
@@ -156,6 +159,10 @@ document.addEventListener('click', (event) => {
     }
 });
 
+// Event listeners for call button
+document.getElementById('call-button').addEventListener('click', () => {
+    makeCall(); // This now uses the latest language data
+});
 
 // Helper function to detect user language
 function detectUserLanguage() {
