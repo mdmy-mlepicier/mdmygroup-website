@@ -45,5 +45,6 @@
     "ctaText": "Contactez notre équipe pour explorer les opportunités de collaboration.",
     "ctaEmailButton": "Nous écrire",
     "ctaCallButton": "Nous appeler",
+    "ctaCallAlertMessage": "Veuillez utiliser votre téléphone pour nous appeler, ou envoyez-nous un email à contact@mdmygroup.com",
     "copyright": "&copy; 2024 - MDMY Group SAS. Tous droits réservés."
 }

@@ -3692,6 +3692,10 @@
 	transform: translateY(-4px); /* Adjust the pixel value as needed */
 }
 
+#mission {
+    overflow: hidden; /* Prevents scrolling within the section */
+}
+
 
 /* Mobile */
 
