@@ -43,7 +43,7 @@ function updateContent(lang) {
             });
 
             // Update banner section
-            updateElement('#banner p', data.tagline, 'Banner tagline');
+            updateElement('#banner-tagline', data.tagline, 'Banner tagline');
             updateElement('#banner-button1', data.bannerButton1, 'Primary banner button');
             updateElement('#banner-button2', data.bannerButton2, 'Secondary banner button');
 
